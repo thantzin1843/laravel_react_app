@@ -8,7 +8,7 @@ import axios from "axios";
 function Signup() {
   const {token,setToken} = useContext(StateContext);
   if(token){
-    return <Navigate to='/dashboard'/>
+    return <Navigate to='/auth/products'/>
   }
   // get input values
   const nameRef = useRef();
