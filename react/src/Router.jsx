@@ -3,11 +3,29 @@ import Login from "./components/Login"
 import Signup from "./components/Signup"
 import NotFound from "./components/NotFound"
 import Index from "./pages/Index"
+import ProductForm from "./pages/ProductForm"
+import DefaultLayout from "./pages/DefaultLayout"
+import ProductDetail from "./pages/ProductDetail"
 const router = createBrowserRouter([
     {
-        path:'/dashboard',
-        element:<Index/>
+        path:'/auth',
+        element:<DefaultLayout/>,
+        children:[
+            {
+                path:'products',
+                element:<Index/>
+            },
+            {
+                path:'create/product',
+                element:<ProductForm/>
+            },
+            {
+                path:'product/detail',
+                element:<ProductDetail/>
+            }
+        ]
     },
+    
     {
         path:'/',
         element:<Login/>
@@ -24,6 +42,7 @@ const router = createBrowserRouter([
         path:'*',
         element:<NotFound/>
     },
+    
 ])
 
 export default router;
