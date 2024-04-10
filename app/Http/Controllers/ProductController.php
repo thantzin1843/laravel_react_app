@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -32,15 +34,24 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        
-        Product::create([
-            'name'=>$request->name,
-            'image'=>$request->image,
-            'description'=>$request->description,
-        ]);
-        return response()->json([
-            'message'=>'Inserted successfully'
-        ],200);
+        try{
+            $imageName = Str::random(32).".".$request->image->getClientOriginalExtension();
+            Product::create([
+                'name'=>$request->name,
+                'image'=>$imageName,
+                'description'=>$request->description,
+            ]);
+            // store image in storge
+            Storage::disk('public')->put($imageName,file_get_contents($request->image));
+            return response()->json([
+                'message'=>'Inserted successfully'
+            ],200);
+
+        }catch(e){
+            return response()->json([
+                'message' => "Something went really wrong!"
+            ],500);
+        }
     }
 
     /**

@@ -13,7 +13,7 @@ function DefaultLayout() {
     <div className='flex '>
         <Navbar/>
         <div className="right w-4/5">
-            <div className='bg-gradient-to-b from-gray-500 font-bold text-xl to-gray-400 m-3 p-5 text-white rounded-md'>
+            <div className='bg-gradient-to-b from-gray-500 font-bold text-xl to-gray-400 m-3 p-5 text-white rounded-md' style={{position:'sticky',top:10,zIndex:10}}>
                 <div>Admin's Dashboard</div>
             </div>
 

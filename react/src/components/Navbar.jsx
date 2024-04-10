@@ -5,7 +5,7 @@ function Navbar() {
     const location = useLocation();
     const {pathname}= location;
   return (
-    <div className="text-white left bg-gray-500 w-1/5 " style={{height:'100vh'}}>
+    <div className="text-white left bg-gray-500 w-1/5 " style={{height:'100vh',position:'sticky',top:0}}>
             <div className='text-3xl text-center py-10 '>Logo</div>
             <div className='text-center '>
                 <div className={pathname=='/auth/products'?'mt-3 p-3  text-md active':''} ><Link to='/auth/products'>Products</Link></div>
