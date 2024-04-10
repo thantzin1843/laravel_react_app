@@ -12,5 +12,5 @@ Route::post('login',[ApiController::class,'login']);
 Route::get('products',[ProductController::class,'index']);
 Route::post('products',[ProductController::class,'store']);
 Route::get('product/{id}',[ProductController::class,'show']);
-Route::post('productupdate',[ProductController::class,'update']);
+Route::post('productupdate/{id}',[ProductController::class,'update']);
 Route::get('product/delete/{id}',[ProductController::class,'destroy']);

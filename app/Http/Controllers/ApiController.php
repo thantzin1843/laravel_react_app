@@ -32,7 +32,6 @@ class ApiController extends Controller
             }else{
                 return response()->json([
                     'message'=>'Wrong Password',
-                    
                 ]);
             }
         }else{
